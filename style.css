@@ -1,0 +1,74 @@
+body {
+    background-color: rgb(97, 96, 93); 
+}
+
+#game_board { 
+    width: 770px;
+    height: 840px;
+    margin: auto;
+}
+#space{
+    height: 50px;
+}
+
+.card {
+    width: 150px;
+    height:200px;
+    border-width: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: gray;
+    background-image: url("画像/カード裏面.jpeg");
+    background-size: contain;
+    background-repeat: no-repeat; 
+    background-position: center;
+    float:left;
+    cursor: grab;
+    margin-bottom: 10px;
+}
+
+img {
+    width: 140px;
+    height: 200px;
+}
+
+.finish {
+    opacity: 0;
+    cursor: default;
+}
+
+
+#result {
+
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#button {
+    font-size: 25px;
+    background-color: red;
+    border-radius: 10px;
+    width: 200px;
+    display: block;
+    margin:auto;
+    margin: 10px 20px 0px 20px; 
+}
+#reload {
+    font-size: 25px;
+    background-color: yellow;
+    width: 200px;
+    border-radius: 10px;
+    display: block;
+    margin:auto;
+    margin: 10px 20px 0px 20px; 
+}
+#buttonbox {
+    display: flex;
+    justify-content: center;
+    
+}
+
+#buttonbox {
+    margin-bottom: 20px;
+}
