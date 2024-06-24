@@ -6,7 +6,7 @@ let imgArray = [
 
 let imgNumArray = [];
 for (let i = 0; i < 10; i++) {//画像のURLが入った配列作成
-    imgNumArray.push("<img src='" + imgArray[i] + ".jpg'>")
+    imgNumArray.push(`<img src="${imgArray[i]}.jpg">`);
 }
 
 let array = [];
