@@ -33,12 +33,6 @@ img {
     height: 200px;
 }
 
-.finish {
-    opacity: 0;
-    cursor: default;
-}
-
-
 #result {
 
     font-size: 1.2em;
@@ -66,9 +60,7 @@ img {
 #buttonbox {
     display: flex;
     justify-content: center;
-    
-}
-
-#buttonbox {
     margin-bottom: 20px;
 }
+
+
