@@ -1,5 +1,7 @@
 body {
-    background-color: rgb(97, 96, 93); 
+/*     background-color: rgb(97, 96, 93);  */
+    background-image: url("背景2.jpg");
+    background-size:cover;
 }
 
 #game_board { 
