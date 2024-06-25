@@ -71,7 +71,7 @@ function turn(event) {
             setTimeout(function () {
                 div.innerHTML = "";
                 firstCard.innerText = '';
-            }, 500);
+            }, 800);
 
         }
         firstDraw = 0;
