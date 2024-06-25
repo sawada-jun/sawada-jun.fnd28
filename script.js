@@ -46,7 +46,7 @@ for (i = 0; i < 20; i++) {
 let firstDraw = 0;
 //一枚目のカードを格納
 let firstCard;
-//揃えた枚数(ペアができるたびに+1 10ペアで終了させる)
+//揃えた枚数(ペアができるたびに+1 10ペアで終了させる機能を追加予定)
 let countUnit = 0;
 
 //カードクリック時の処理;
@@ -78,14 +78,13 @@ function turn(event) {
     }
 }
 
-
-document.getElementById("button").addEventListener("click", function () {
+document.getElementById("button").addEventListener("click", function () {//全カードの画像を追加
     let cards = document.querySelectorAll(".card");
     for (let i = 0; i < cards.length; i++) {
         cards[i].innerHTML = imgNumArray[cards[i].number];
     }
 });
 
-document.getElementById("reload").addEventListener("click", function () {
+document.getElementById("reload").addEventListener("click", function () {//クリックで画面を更新
     window.location.reload();
 })
