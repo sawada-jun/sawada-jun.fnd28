@@ -1,5 +1,6 @@
 body {
     background-image: url("背景1.jpg");
+    background-size:cover;
 }
 
 #game_board { 
