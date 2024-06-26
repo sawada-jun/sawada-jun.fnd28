@@ -71,7 +71,7 @@ button:active {
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/* スタートボタンのスタイル */
+
 #reload {
     color: #b1921b;
     border-right: 4px solid #cea82c;
@@ -85,7 +85,7 @@ button:active {
     text-shadow: 0 0 7px #ffffd9, 0 0 7px #ffffd9, 0 0 7px #ffffd9, 0 0 7px #ffffd9, 0 0 7px #ffffd9, 0 0 7px #ffffd9, 0 0 7px #ffffd9, 0 0 7px #ffffd9;
 }
 
-/* オープンボタンのスタイル */
+
 #button {
     color: #000;
     border-top: 4px solid #d8dcdc;
