@@ -20,7 +20,7 @@ body {
     text-align: center;
     font-weight: bold;
     box-shadow: gray;
-    background-image: url("画像/カード裏面.jpeg");
+    background-image: url("カード裏面.jpeg");
     background-size: contain;
     background-repeat: no-repeat; 
     background-position: center;
