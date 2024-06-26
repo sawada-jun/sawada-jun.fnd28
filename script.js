@@ -5,7 +5,7 @@ let imgArray = [
 ];
 
 let imgNumArray = [];
-for (let i = 0; i < 10; i++) { //画像のURLが入った配列作成
+for (let i = 0; i < 10; i++) { 
     imgNumArray.push("<img src='" + imgArray[i] + ".png'>");
 }
 
@@ -16,14 +16,14 @@ function numberPea() {
         array.push(i);
     }
 }
-numberPea(); //0~9のペアが入った配列を作成
+numberPea(); 
 
 function shuffle(array) {
     for (let i = array.length - 1; i >= 0; i--) {
-        let r = Math.floor(Math.random() * (i + 1)); //ランダムな整数を代入
-        let value = array[i]; //ループ時の値を代入
-        array[i] = array[r]; //ループ時の値にランダム整数で取得したインデックス番号の値を代入
-        array[r] = value; //ランダム整数で取得したインデックス番号の値にループ時の値を代入(入れ替え)
+        let r = Math.floor(Math.random() * (i + 1)); 
+        let value = array[i];
+        array[i] = array[r];
+        array[r] = value; 
     }
     return array;
 }
@@ -31,17 +31,17 @@ function shuffle(array) {
 function createGameBoard() {
     shuffle(array);
     let game_board = document.getElementById("game_board");
-    game_board.innerHTML = ''; // 既存のカードを削除
+    game_board.innerHTML = ''; 
     for (let i = 0; i < 20; i++) {
         let div = document.createElement("div");
-        div.className = "card"; //カードの裏側を表示するためのタグ
-        div.number = array[i]; // カードにインデックス番号を追加
-        div.addEventListener("click", turn); //クリックイベントを追加
-        game_board.appendChild(div); //土台に各divを追加
+        div.className = "card"; 
+        div.number = array[i]; 
+        div.addEventListener("click", turn); //クリックイベ
+        game_board.appendChild(div); 
     }
 }
 
-// タイマー用の変数
+
 let startTime;
 let timer;
 
@@ -59,32 +59,32 @@ function updateElapsedTime() {
     document.getElementById("elapsed_time").innerText = elapsedTime;
 }
 
-//一枚目かどうかのフラグ(1枚目:true 2枚目:false)
+
 let firstDraw = 0;
-//一枚目のカードを格納
+
 let firstCard;
-//揃えた枚数(ペアができるたびに+1 10ペアで終了させる)
+
 let countUnit = 0;
 
 function turn(event) {
     let div = event.target;
-    // 裏向きのカードをクリックした場合は画像を表示する
+   
     if (div.innerText === '') {
-        div.innerHTML = imgNumArray[div.number]; //カードに追加されたインデックス番号の画像をurlとして指定して代入
+        div.innerHTML = imgNumArray[div.number]; 
     } else {
-        return; //数字が表示されているカードはなにもしない
+        return; 
     }
 
-    if (firstDraw === 0) { //一枚目のドローだったら
-        firstCard = div; //カードの情報を収納
-        firstDraw = 1; //1を代入→二枚目の処理へ
-    } else { //二枚目の処理
-        if (firstCard.number === div.number) { //二枚目のドローカードの番号が今引いた番号と一緒だったら
+    if (firstDraw === 0) { 
+        firstCard = div;
+        firstDraw = 1;
+    } else { 
+        if (firstCard.number === div.number) { 
             countUnit++;
             if (countUnit === 10) {
                 stopTimer();
                 document.getElementById("result_box").style.display = "block";
-                updateElapsedTime(); // 経過時間を更新して表示
+                updateElapsedTime(); 
             }
         } else {
             div.innerHTML = imgNumArray[div.number];
@@ -107,20 +107,20 @@ document.getElementById("button").addEventListener("click", function () {
     }
     stopTimer();
     document.getElementById("result_box").style.display = "block";
-    updateElapsedTime(); // 経過時間を更新して表示
+    updateElapsedTime(); 
 });
 
 document.getElementById("reload").addEventListener("click", function () {
-    stopTimer(); // 既存のタイマーを停止
-    countUnit = 0; // 揃えた枚数をリセット
-    firstDraw = 0; // 一枚目フラグをリセット
-    createGameBoard(); // ゲームボードを再作成
-    startTimer(); // タイマーを再開
-    document.getElementById("result_box").style.display = "none"; // 結果ボックスを非表示にする
+    stopTimer(); 
+    countUnit = 0; 
+    firstDraw = 0; 
+    createGameBoard(); 
+    startTimer();
+    document.getElementById("result_box").style.display = "none";
 });
 
-// ページ読み込み時にゲームボードを作成
+
 window.onload = function() {
     createGameBoard();
-    startTimer(); // ページ読み込み時にタイマーを開始
+    startTimer(); 
 }
