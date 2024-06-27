@@ -5,7 +5,7 @@ let imgArray = [
 ];
 
 let imgNumArray = [];
-for (let i = 0; i < 10; i++) { 
+for (let i = 0; i < 10; i++) {
     imgNumArray.push("<img src='" + imgArray[i] + ".png'>");
 }
 
@@ -16,14 +16,14 @@ function numberPea() {
         array.push(i);
     }
 }
-numberPea(); 
+numberPea();
 
 function shuffle(array) {
     for (let i = array.length - 1; i >= 0; i--) {
-        let r = Math.floor(Math.random() * (i + 1)); 
+        let r = Math.floor(Math.random() * (i + 1));
         let value = array[i];
         array[i] = array[r];
-        array[r] = value; 
+        array[r] = value;
     }
     return array;
 }
@@ -31,16 +31,15 @@ function shuffle(array) {
 function createGameBoard() {
     shuffle(array);
     let game_board = document.getElementById("game_board");
-    game_board.innerHTML = ''; 
+    game_board.innerHTML = '';
     for (let i = 0; i < 20; i++) {
         let div = document.createElement("div");
-        div.className = "card"; 
-        div.number = array[i]; 
-        div.addEventListener("click", turn); //クリックイベ
-        game_board.appendChild(div); 
+        div.className = "card";
+        div.number = array[i];
+        div.addEventListener("click", turn); //クリックイベント
+        game_board.appendChild(div);
     }
 }
-
 
 let startTime;
 let timer;
@@ -59,46 +58,44 @@ function updateElapsedTime() {
     document.getElementById("elapsed_time").innerText = elapsedTime;
 }
 
-
 let firstDraw = 0;
-
 let firstCard;
-
 let countUnit = 0;
+let disableClick = false;
 
 function turn(event) {
+    if (disableClick) return;
+
     let div = event.target;
-   
-    if (div.innerText === '') {
-        div.innerHTML = imgNumArray[div.number]; 
+
+    if (div.innerHTML === '') {
+        div.innerHTML = imgNumArray[div.number];
     } else {
-        return; 
+        return;
     }
 
-    if (firstDraw === 0) { 
+    if (firstDraw === 0) {
         firstCard = div;
         firstDraw = 1;
-    } else { 
-        if (firstCard.number === div.number) { 
-            countUnit++;
-            if (countUnit === 10) {
-                stopTimer();
-                document.getElementById("result_box").style.display = "block";
-                updateElapsedTime(); 
-            }
-        } else {
-            div.innerHTML = imgNumArray[div.number];
-            setTimeout(function () {
+    } else {
+        disableClick = true;
+        setTimeout(function () {
+            if (firstCard.number === div.number) {
+                countUnit++;
+                if (countUnit === 10) {
+                    stopTimer();
+                    document.getElementById("result_box").style.display = "block";
+                    updateElapsedTime();
+                }
+            } else {
                 div.innerHTML = "";
-                firstCard.innerText = '';
-            }, 800);
-        }
-        firstDraw = 0;
+                firstCard.innerHTML = "";
+            }
+            disableClick = false;
+            firstDraw = 0;
+        }, 800);
     }
 }
-
-
-
 
 document.getElementById("button").addEventListener("click", function () {
     let cards = document.querySelectorAll(".card");
@@ -107,20 +104,19 @@ document.getElementById("button").addEventListener("click", function () {
     }
     stopTimer();
     document.getElementById("result_box").style.display = "block";
-    updateElapsedTime(); 
+    updateElapsedTime();
 });
 
 document.getElementById("reload").addEventListener("click", function () {
-    stopTimer(); 
-    countUnit = 0; 
-    firstDraw = 0; 
-    createGameBoard(); 
+    stopTimer();
+    countUnit = 0;
+    firstDraw = 0;
+    createGameBoard();
     startTimer();
     document.getElementById("result_box").style.display = "none";
 });
 
-
-window.onload = function() {
+window.onload = function () {
     createGameBoard();
-    startTimer(); 
+    startTimer();
 }
